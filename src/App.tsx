@@ -1,21 +1,20 @@
+import { Logo } from "./components/Logo";
+import { Container } from "./components/Container";
+
 import "./styles/theme.css";
 import "./styles/global.css";
-import { Container } from "./components/Container";
+import { Heading } from "./components/Heading";
 
 export function App() {
   console.log("App component rendered");
   return (
     <>
       <Container>
-        <section>
-          LOGO
-        </section>
+          <Logo />
       </Container>
 
       <Container>
-        <section>
-          MENU
-        </section>
+          <Heading> MENU </Heading>
       </Container>
 
     </>
