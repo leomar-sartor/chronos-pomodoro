@@ -3,7 +3,8 @@ import { Container } from "./components/Container";
 
 import "./styles/theme.css";
 import "./styles/global.css";
-import { Heading } from "./components/Heading";
+
+import { Menu } from "./components/Menu";
 
 export function App() {
   console.log("App component rendered");
@@ -14,7 +15,7 @@ export function App() {
       </Container>
 
       <Container>
-          <Heading> MENU </Heading>
+          <Menu />
       </Container>
 
     </>
