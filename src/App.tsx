@@ -6,6 +6,7 @@ import "./styles/global.css";
 
 import { Menu } from "./components/Menu";
 import { CountDown } from "./components/CountDown";
+import { DefaultInput } from "./components/DefaultInput";
 
 export function App() {
   console.log("App component rendered");
@@ -27,8 +28,7 @@ export function App() {
         <form className="form" action="">
 
           <div className="formRow">
-            <label htmlFor="meuInput">Task</label>
-            <input id="meuInput" type="text" />
+            <DefaultInput id="meuInput" type="text"/>
           </div>
 
           <div className="formRow">
