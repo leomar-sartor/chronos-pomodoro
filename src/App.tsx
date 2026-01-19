@@ -11,38 +11,15 @@ import { Cycles } from "./components/Cycles";
 import { DefaultButton } from "./components/DefaultButton";
 import { PlayCircleIcon } from "lucide-react";
 import { Footer } from "./components/Footer";
-import { useState } from "react";
 import { Heading } from "./components/Heading";
 
 export function App() {
 
-  const [numero, setNumero] = useState(0);
-
-  //Lazing inicialization/Instaciantion
-  //Operação custosa - posso usar função
-  const [numero2, setNumero2] = useState(() =>{
-    console.log('Lazing inicialization/Instaciantion');
-    //Vai processar somente a primeira vez, depois tem que ser atualizado por
-    //um useEffect, por exemplo
-    return 0;// Valor do state
-  });
-
-
-  function handleClick() {
-    setNumero(prevState => prevState + 1); //Garante que o valor vai incrementar
-    setNumero(numero + 1); //Não Garante que o valor vai incrementar
-  }
-
-  
-
-
   return (
     <>
       <Heading>
-        Número: {numero}
+        <Logo />
       </Heading>
-
-      <button onClick={handleClick}> Aumentar </button>
 
       <Container>
         <Logo />
