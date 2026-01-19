@@ -1,6 +1,6 @@
 import { HistoryIcon, HouseIcon, SettingsIcon, SunIcon } from 'lucide-react';
 import styles from './styles.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 type AvailableThemes = 'dark' | 'light';
 
@@ -13,11 +13,26 @@ export function Menu() {
   ) {
     event.preventDefault();
 
-    setTheme(prevTheme =>{
+    setTheme(prevTheme => {
       const nextTheme = prevTheme === 'dark' ? 'light' : 'dark';
       return nextTheme;
     });
   }
+
+  //Toda vez que qualquer coisa mudar nesse componente
+  //Irá reenderizar a tela novamente pra pegar valores
+  //E o Efeito Colateral vai disparar novamente
+  // useEffect(() => {
+  //   console.log("useEffect sem dependências", Date.now());
+  // }); 
+
+  useEffect(() => {
+    console.log("", Date.now());
+  }, []); 
+
+  // useEffect(() => {
+  //   console.log("", Date.now());
+  // }, [theme]); 
 
   return (
     <nav className={styles.menu}>
