@@ -26,9 +26,11 @@ export function Menu() {
   //   console.log("useEffect sem dependências", Date.now());
   // }); 
 
-  useEffect(() => {
-    console.log("", Date.now());
-  }, []); 
+  // Quando o componente é montado pela primeira vez
+  // O Efeito Colateral vai disparar uma vez
+  // useEffect(() => {
+  //   console.log("useEffect com dependência vazia", Date.now());
+  // }, []); 
 
   // useEffect(() => {
   //   console.log("", Date.now());
