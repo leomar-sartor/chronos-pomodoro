@@ -32,9 +32,18 @@ export function Menu() {
   //   console.log("useEffect com dependência vazia", Date.now());
   // }, []); 
 
-  // useEffect(() => {
-  //   console.log("", Date.now());
-  // }, [theme]); 
+  // Quando a dependência tem mudança de valor (no case, theme)
+  useEffect(() => {
+    console.log("useEffect com dependência - theme", Date.now());
+
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    //Função de Clean Up
+    return () => {
+      console.log("Limpando algo - sou executado antes da segunda atualização", Date.now());
+    };
+    
+  }, [theme]); 
 
   return (
     <nav className={styles.menu}>
