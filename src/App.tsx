@@ -22,10 +22,6 @@ export function App() {
       </Heading>
 
       <Container>
-        <Logo />
-      </Container>
-
-      <Container>
         <Menu />
       </Container>
 
