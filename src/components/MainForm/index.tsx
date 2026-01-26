@@ -43,55 +43,67 @@ export function MainForm() {
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
 
-  }
+    const worker = new Worker(
+      new URL('../../workers/timeWorker.js', import.meta.url),
+    );
 
-  function handleInterruptCurrentTask() {
-    dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
-  }
+    worker.postMessage('FAVOR'); // Sim, posso fazer um favor
+    worker.postMessage('FALA_OI'); // OK: OI!
+    worker.postMessage('BLALBLA'); // Não entendi!
+    worker.postMessage('FECHAR'); // Tá bom, vou fechar
 
-  return (
-    <form onSubmit={handleCreateNewTask} className="form" action="">
+    worker.onmessage = function (event) {
+      console.log('PRINCIPAL recebeu:', event.data);
 
-      <div className="formRow">
-        <DefaultInput labelText="Task" id="meuInput" type="text" placeholder="Digite algo"
-          ref={taskNameInput}
-          disabled={!!state.activeTask}
-        />
-      </div>
+    }
 
-      <div className="formRow">
-        <Tips />
-      </div>
+    function handleInterruptCurrentTask() {
+      dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
+    }
 
-      {state.currentCycle > 0 && (
+    return (
+      <form onSubmit={handleCreateNewTask} className="form" action="">
+
         <div className="formRow">
-          <Cycles />
+          <DefaultInput labelText="Task" id="meuInput" type="text" placeholder="Digite algo"
+            ref={taskNameInput}
+            disabled={!!state.activeTask}
+          />
         </div>
-      )}
 
-      <div className="formRow">
-        {!state.activeTask ? (
-          <DefaultButton
-            aria-label="Iniciar nova Tarefa"
-            title="Iniciar nova Tarefa"
-            type='submit'
-            icon={<PlayCircleIcon />}
-            key="btn_submit"
-          />
-        ) : (
-          <DefaultButton
-            aria-label="Interromper Tarefa atual"
-            title="Interromper Tarefa atual"
-            type='button'
-            color="red"
-            icon={<StopCircleIcon />}
-            onClick={handleInterruptCurrentTask}
-            key="btn_cancel"
-          />
+        <div className="formRow">
+          <Tips />
+        </div>
+
+        {state.currentCycle > 0 && (
+          <div className="formRow">
+            <Cycles />
+          </div>
         )}
 
-      </div>
+        <div className="formRow">
+          {!state.activeTask ? (
+            <DefaultButton
+              aria-label="Iniciar nova Tarefa"
+              title="Iniciar nova Tarefa"
+              type='submit'
+              icon={<PlayCircleIcon />}
+              key="btn_submit"
+            />
+          ) : (
+            <DefaultButton
+              aria-label="Interromper Tarefa atual"
+              title="Interromper Tarefa atual"
+              type='button'
+              color="red"
+              icon={<StopCircleIcon />}
+              onClick={handleInterruptCurrentTask}
+              key="btn_cancel"
+            />
+          )}
 
-    </form>
-  );
-}
+        </div>
+
+      </form>
+    );
+  }
