@@ -20,3 +20,8 @@ npm run lint
 ```js
 npm run build
 ```
+
+# Buildar e Ver o Projeto Pronto
+```js
+npm run preview
+```
