@@ -17,3 +17,6 @@ npm run lint
 ```
 
 # Build
+```js
+npm run build
+```
