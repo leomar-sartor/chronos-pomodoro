@@ -9,3 +9,11 @@ npm create vite@latest
 ```js
 npm run dev
 ```
+
+# Verificações 
+
+```js
+npm run lint
+```
+
+# Build
